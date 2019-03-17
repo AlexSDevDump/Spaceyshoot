@@ -5,31 +5,35 @@ using UnityEngine;
 public class SpaceshipControl : MonoBehaviour {
 
     public float moveSpeed;
+    public float xMin, xMax, yMin, yMax;
 
     private Vector2 moveDirection;
     private Vector2 move;
-    private Rigidbody2D rb2d;
+    private Vector2 clampedMovement;
+
 
     private bool inControl = true;
 
+   
 
 	// Use this for initialization
-	void Start () {
-        rb2d = GetComponent<Rigidbody2D>();
+	void Start ()
+    {
+
 	}
-	
+
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
         move = Vector2.zero;
         move.x = Input.GetAxisRaw("Horizontal");
         move.y = Input.GetAxisRaw("Vertical");
 
-        moveDirection = (transform.up * move.y + transform.right * move.x);
-        moveDirection = moveDirection.normalized * moveSpeed;
-	}
+        transform.Translate(move.x * moveSpeed * Time.deltaTime, move.y * moveSpeed * Time.deltaTime, 0);
 
-    void FixedUpdate()
-    {
-        rb2d.MovePosition(rb2d.position + moveDirection * Time.fixedDeltaTime);
+        transform.position = new Vector2(
+            Mathf.Clamp(transform.position.x, xMin, xMax),
+            Mathf.Clamp(transform.position.y, yMin, yMax)
+            );
     }
 }
