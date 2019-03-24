@@ -35,6 +35,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4154600315603418}
   - component: {fileID: 212584128593290598}
+  - component: {fileID: 114102444053987742}
   m_Layer: 0
   m_Name: Spaceship Sprite
   m_TagString: Untagged
@@ -51,9 +52,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4156329117908874}
   - component: {fileID: 61270126298026754}
-  - component: {fileID: 114313778541928938}
   - component: {fileID: 50015936276558544}
+  - component: {fileID: 114313778541928938}
   - component: {fileID: 114581510668963618}
+  - component: {fileID: 114667790030426908}
   m_Layer: 0
   m_Name: SpaceshipPrefab
   m_TagString: Player
@@ -160,7 +162,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.101652384, y: 0.018979073}
@@ -176,6 +178,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.56005526, y: 0.54495144}
   m_EdgeRadius: 0
+--- !u!114 &114102444053987742
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1664353051238154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62de16155ed7a8542864641b869a6c71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114313778541928938
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -187,11 +200,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59cf07b7e0dd4b844940bde52b10d82c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
-  xMin: -5
+  moveSpeed: 4
+  xMin: -6
   xMax: -4
   yMin: -3.8
   yMax: 3.8
+  sprite: {fileID: 1664353051238154}
 --- !u!114 &114581510668963618
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -207,6 +221,19 @@ MonoBehaviour:
   gunBarrelLeftObj: {fileID: 1255642373759938}
   gunBarrelRightObj: {fileID: 1760361417286846}
   fireRate: 1
+--- !u!114 &114667790030426908
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1687556395429200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a86d86827050f04d9493f2dfcef1602, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  shield: 0
 --- !u!212 &212584128593290598
 SpriteRenderer:
   m_ObjectHideFlags: 1

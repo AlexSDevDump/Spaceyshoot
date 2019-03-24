@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Destroyer : MonoBehaviour {
+public class GameManager : MonoBehaviour {
+
+    private float survivalTimer;
 
 	// Use this for initialization
 	void Start () {
@@ -14,10 +16,8 @@ public class Destroyer : MonoBehaviour {
 		
 	}
 
-    private void OnTriggerExit2D(Collider2D other)
+    public void EndGame()
     {
-        {
-            Destroy(other.gameObject);
-        }
+        Debug.Log("You survived " + survivalTimer);
     }
 }
