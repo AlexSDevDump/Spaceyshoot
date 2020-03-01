@@ -7,39 +7,28 @@ public class BulletBehaviour : MonoBehaviour {
     public float moveSpeed;
     public int damage;
     public string name;
+    public Rigidbody2D rb;
     Collider2D hitbox;
 
 	// Use this for initialization
 	void Start () {
-        hitbox = GetComponent<Collider2D>();
-        StartCoroutine(EnableCollision());
+        rb.velocity = transform.right * moveSpeed;
     }
-	
-	// Update is called once per frame
-	void Update () {
-        transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
-    }
+
 
     private void OnTriggerEnter2D(Collider2D objectHit)
     {
+        Debug.Log(objectHit);
         if (objectHit.gameObject.tag != "Destroyer")
         {
-            if (objectHit.gameObject.tag == "BulletTarget")
+            Damage enemy = objectHit.GetComponent<Damage>();
+
+            if (enemy != null)
             {
-                DamageSend(objectHit);
+                Debug.Log(enemy.name);
+                objectHit.GetComponent<Damage>().TakeDamage(name, 10);
             }
             Destroy(gameObject);
         }
-    }
-
-    void DamageSend(Collider2D objectHit)
-    {
-        objectHit.GetComponent<Damage>().TakeDamage(name, 10);
-    }
-
-    private IEnumerator EnableCollision()
-    {
-        yield return new WaitForSeconds(0.2f);
-        hitbox.enabled = true;
     }
 }

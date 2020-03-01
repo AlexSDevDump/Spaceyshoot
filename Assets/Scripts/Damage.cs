@@ -16,7 +16,13 @@ public class Damage : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (Input.GetKeyDown("k"))
+        {
+            if(gameObject.tag == "Player")
+            {
+                Die();
+            }
+        }
     }
 
     public void TakeDamage(string enemy, int damage)
@@ -33,6 +39,7 @@ public class Damage : MonoBehaviour
         Destroy(gameObject);
         if (gameObject.tag == "Player")
         {
+            Debug.Log("Player DIED");
             FindObjectOfType<GameManager>().EndGame();
         }
     }

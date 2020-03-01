@@ -6,8 +6,8 @@ TagManager:
   tags:
   - Destroyer
   - Projectile
-  - Worm
-  - BulletTarget
+  - Enemy
+  - Asteroid
   layers:
   - Default
   - TransparentFX

@@ -2,18 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpaceWormSpawner : MonoBehaviour {
+public class ObjectSpawner : MonoBehaviour {
 
     public Vector2 spawnTime;
     public Vector3 offsetPosition;
-    public GameObject spacewormObj;
+    public GameObject objToSpawn;
+    public int maxSpawns;
     private float randomTime;
     private Vector3 spawnPosition;
 
     // Use this for initialization
     void Start () {
         spawnPosition = transform.position;
-        SpawnSpaceWorm();
+        SpawnObject();
     }
 	
 	// Update is called once per frame
@@ -21,7 +22,7 @@ public class SpaceWormSpawner : MonoBehaviour {
 		
 	}
 
-    private void SpawnSpaceWorm()
+    private void SpawnObject()
     {
         spawnPosition.x += Random.Range(-5.0f, 5.0f);
         randomTime = Random.Range(spawnTime.x, spawnTime.y);
@@ -36,8 +37,10 @@ public class SpaceWormSpawner : MonoBehaviour {
             offsetPosition.y = -offsetPosition.y;
         else
             Mathf.Abs(offsetPosition.y);
-        Instantiate(spacewormObj, spawnPosition + offsetPosition, transform.rotation);
-        Debug.Log(spawnPosition + offsetPosition);
-        SpawnSpaceWorm();
+        if (GameObject.FindGameObjectsWithTag("Enemy").Length < maxSpawns)
+        {
+            Instantiate(objToSpawn, spawnPosition + offsetPosition, transform.rotation);
+        }
+        SpawnObject();
     }
 }

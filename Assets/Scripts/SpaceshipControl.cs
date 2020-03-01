@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class SpaceshipControl : MonoBehaviour
 {
-
-    public float moveSpeed;
-    public float xMin, xMax, yMin, yMax;
+    public float moveSpeed, xMin, xMax, yMin, yMax;
     public GameObject sprite;
 
     private Vector2 moveDirection;
